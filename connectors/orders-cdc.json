@@ -1,0 +1,21 @@
+{
+  "name": "orders-cdc-connector",
+  "config": {
+    "connector.class": "io.debezium.connector.postgresql.PostgresConnector",
+    "database.hostname": "postgres-source",
+    "database.port": "5432",
+    "database.user": "postgres",
+    "database.password": "postgres",
+    "database.dbname": "sourcedb",
+    "topic.prefix": "cdc",
+    "table.include.list": "public.orders",
+    "plugin.name": "pgoutput",
+    "slot.name": "orders_cdc_slot",
+    "snapshot.mode": "initial",
+    "decimal.handling.mode": "string",
+    "key.converter": "org.apache.kafka.connect.json.JsonConverter",
+    "value.converter": "org.apache.kafka.connect.json.JsonConverter",
+    "key.converter.schemas.enable": "false",
+    "value.converter.schemas.enable": "false"
+  }
+}
